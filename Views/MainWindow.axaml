@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ComVis.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:Width="600" d:Height="450"
+        x:Class="ComVis.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Title="ONNX Inference App" Width="600" Height="450">
+
+    <StackPanel Margin="20" Spacing="15">
+        <!-- Выбор модели -->
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <Button Content="Выбрать ONNX модель" Command="{Binding SelectModelCommand}"/>
+            <TextBlock Text="{Binding ModelPath}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Width="380"/>
+        </StackPanel>
+
+        <!-- Выбор медиа (фото/видео) -->
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <Button Content="Выбрать файл (Фото/Видео)" Command="{Binding SelectMediaCommand}"/>
+            <TextBlock Text="{Binding MediaPath}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Width="350"/>
+        </StackPanel>
+
+        <!-- Кнопка запуска -->
+        <Button Content="Запустить инференс" Command="{Binding RunInferenceCommand}" 
+                Background="#007ACC" Foreground="White" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+
+        <Separator/>
+
+        <!-- Метрики -->
+        <TextBlock Text="Метрики инференса:" FontWeight="Bold"/>
+        <TextBox Text="{Binding MetricsResult}" AcceptsReturn="True" IsReadOnly="True" Height="150"/>
+    </StackPanel>
+</Window>
